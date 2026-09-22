@@ -9,3 +9,166 @@ html {
 body {
   margin: 0;
 }
+
+.phone-carousel {
+  width: min(100%, 640px);
+  margin: 0 auto;
+}
+
+.phone-carousel__phones {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 620px;
+  padding: 24px 0 18px;
+}
+
+.phone-carousel__phone {
+  position: relative;
+  width: clamp(160px, 18vw, 215px);
+  aspect-ratio: 1080 / 2400;
+  flex: 0 0 auto;
+  padding: 7px;
+  overflow: hidden;
+  border: 6px solid #17243c;
+  border-radius: 36px;
+  background: #101d35;
+  box-shadow: 0 35px 55px -25px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(255, 255, 255, 0.32) inset;
+  transform-origin: 50% 90%;
+  transition: transform 260ms ease, filter 260ms ease, box-shadow 260ms ease;
+}
+
+.phone-carousel__phone::before {
+  position: absolute;
+  z-index: 2;
+  top: 11px;
+  left: 50%;
+  width: 44%;
+  height: 18px;
+  border-radius: 0 0 12px 12px;
+  background: #101d35;
+  content: '';
+  transform: translateX(-50%);
+}
+
+.phone-carousel__phone--back {
+  z-index: 1;
+  margin-right: -82px;
+  transform: translateY(92px) rotate(-10deg) scale(0.82);
+  filter: brightness(0.88) saturate(0.92);
+}
+
+.phone-carousel__phone--middle {
+  z-index: 1;
+  transform: translateY(54px) rotate(8deg) scale(0.88);
+  filter: brightness(0.9) saturate(0.94);
+}
+
+.phone-carousel__phone--front {
+  z-index: 3;
+  margin-left: -82px;
+  transform: translateY(0) rotate(0deg) scale(1.03);
+}
+
+.phone-carousel__phone--back:hover {
+  z-index: 4;
+  filter: brightness(1) saturate(1);
+  transform: translate(-8px, 75px) rotate(-10deg) scale(0.86);
+}
+
+.phone-carousel__phone--middle:hover {
+  z-index: 4;
+  filter: brightness(1) saturate(1);
+  transform: translate(4px, 38px) rotate(8deg) scale(0.92);
+}
+
+.phone-carousel__phone--front:hover {
+  transform: translateY(-12px) rotate(0deg) scale(1.06);
+  box-shadow: 0 42px 65px -24px rgba(0, 0, 0, 0.78), 0 0 0 1px rgba(255, 255, 255, 0.38) inset;
+}
+
+.phone-carousel__screen {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #f5f6fa;
+}
+
+.phone-carousel__screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.phone-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 22px;
+}
+
+.phone-carousel__dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: width 180ms ease, background 180ms ease;
+}
+
+.phone-carousel__dots button.active {
+  width: 22px;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .phone-carousel {
+    max-width: 560px;
+  }
+
+  .phone-carousel__phones {
+    min-height: 560px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .phone-carousel__phones {
+    min-height: 500px;
+  }
+
+  .phone-carousel__phone {
+    width: 142px;
+  }
+
+  .phone-carousel__phone--back {
+    margin-right: -48px;
+    transform: translateY(62px) rotate(-8deg) scale(0.78);
+  }
+
+  .phone-carousel__phone--middle {
+    transform: translateY(36px) rotate(6deg) scale(0.84);
+  }
+
+  .phone-carousel__phone--front {
+    margin-left: -48px;
+    transform: translateY(0) rotate(0deg) scale(0.92);
+  }
+
+  .phone-carousel__phone--back:hover,
+  .phone-carousel__phone--middle:hover,
+  .phone-carousel__phone--front:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-carousel__phone,
+  .phone-carousel__dots button {
+    transition: none;
+  }
+}
