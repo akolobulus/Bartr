@@ -25,8 +25,14 @@ export function PhoneCarousel({ images, interval = 3600 }: PhoneCarouselProps) {
 
   if (!images.length) return null;
 
-  const visibleImages = [0, 1, 2].map((offset) => images[(current + offset) % images.length]);
-  const phoneClasses = ['phone-carousel__phone phone-carousel__phone--back', 'phone-carousel__phone phone-carousel__phone--middle', 'phone-carousel__phone phone-carousel__phone--front'];
+  const visibleImages = [-1, 0, 1].map(
+    (offset) => images[(current + offset + images.length) % images.length],
+  );
+  const phoneClasses = [
+    'phone-carousel__phone phone-carousel__phone--left',
+    'phone-carousel__phone phone-carousel__phone--center',
+    'phone-carousel__phone phone-carousel__phone--right',
+  ];
 
   return (
     <div className="phone-carousel" aria-label="Bartr product screenshots">
