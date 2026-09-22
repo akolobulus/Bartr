@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bartr: There's always someone nearby who can.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!--
-  FONT NOTE: "Rency" (with Naira-sign support) could not be verified/located
-  from any font source. Using Space Grotesk + Inter as a placeholder pairing.
-  Swap the @import below and the --font-display / --font-body variables once
-  you share the actual Rency font file or a working link.
--->
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'Rency';
+    src:local('Rency'), local('Rency Regular');
+    font-weight:400 700;
+    font-style:normal;
+    font-display:swap;
+  }
+
   :root{
     /* ---- Brand kit ---- */
     --blue:        #0067f5;   /* Primary: used as the page/section background */
@@ -33,8 +32,8 @@
     --ink-soft:   #5B6472;
     --card:       #FFFFFF;
 
-    --font-display:'Space Grotesk', sans-serif;
-    --font-body:'Inter', sans-serif;
+    --font-display:'Rency', system-ui, sans-serif;
+    --font-body:'Rency', system-ui, sans-serif;
 
     --radius-s: 10px;
     --radius-m: 18px;
@@ -79,8 +78,8 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 28px; max-width:var(--max); margin:0 auto;
   }
-  .logo{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.35rem; color:var(--ink); }
-  .logo svg{ width:30px; height:30px; }
+  .logo{ display:flex; align-items:center; }
+  .logo img{ width:168px; height:54px; object-fit:cover; object-position:center 42%; }
   .nav-links{ display:flex; gap:34px; font-size:0.95rem; font-weight:500; color:var(--ink-soft); }
   .nav-links a:hover{ color:var(--ink); }
   .nav-cta{
@@ -90,6 +89,11 @@
   }
   .nav-cta:hover{ background:var(--blue-s2); transform:translateY(-1px); }
   @media(max-width:800px){ .nav-links{ display:none; } }
+  @media(max-width:420px){
+    .nav{ padding:14px 18px; }
+    .logo img{ width:142px; height:46px; }
+    .nav-cta{ padding:10px 16px; }
+  }
 
   /* ---------- Hero ---------- */
   .hero{ padding:84px 0 60px; overflow:hidden; background:var(--blue); color:#fff; }
@@ -183,27 +187,10 @@
   }
   .phone-dots button.active{ background:#fff; width:22px; border-radius:5px; }
 
-  /* ---------- Feature cards ---------- */
+  /* ---------- Section headers ---------- */
   .section-head{ max-width:640px; margin-bottom:52px; }
   .section-head h2{ font-size:clamp(1.8rem,3vw,2.5rem); }
   .section-head p{ margin-top:14px; color:var(--ink-soft); font-size:1.08rem; }
-
-  .feature-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  @media(max-width:860px){ .feature-grid{ grid-template-columns:1fr 1fr; } }
-  @media(max-width:600px){ .feature-grid{ grid-template-columns:1fr; } }
-
-  .feature-card{
-    background:var(--card); border-radius:var(--radius-m); padding:30px 26px;
-    border:1px solid rgba(10,46,101,0.1);
-    box-shadow:0 20px 40px -28px rgba(10,46,101,0.35);
-  }
-  .feature-card .icon{
-    width:46px; height:46px; border-radius:12px; background:var(--blue-t4);
-    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
-  }
-  .feature-card .icon svg{ width:24px; height:24px; color:var(--blue); }
-  .feature-card h3{ font-size:1.12rem; margin-bottom:8px; color:var(--ink); }
-  .feature-card p{ color:var(--ink-soft); font-size:0.95rem; }
 
   /* ---------- How it works ---------- */
   .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
@@ -315,15 +302,10 @@
 <header>
   <div class="nav">
     <div class="logo">
-      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 12L14 6L14 10L26 10V14L14 14V18L6 12Z" fill="#0067f5"/>
-        <path d="M26 20L18 26L18 22L6 22V18L18 18V14L26 20Z" fill="#0a2e65"/>
-      </svg>
-      Bartr
+      <img src="/logo.png" alt="Bartr" />
     </div>
     <nav class="nav-links">
       <a href="#how">How it works</a>
-      <a href="#features">Why Bartr</a>
       <a href="#research">Our story</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -408,38 +390,6 @@
   </div>
   <div class="wrap">
     <div class="phone-dots" id="phoneDots"></div>
-  </div>
-</section>
-
-<section id="features">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Built around trust, not just transactions</h2>
-      <p>Every part of Bartr exists because someone told us, in their own words, exactly what was missing.</p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 9H21.5L15.5 13.5L18 21L12 16.5L6 21L8.5 13.5L2.5 9H9.5L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        </div>
-        <h3>A reputation you can carry anywhere</h3>
-        <p>No more hoping a stranger is who they say they are. Every job completed on Bartr builds a reputation that's honest, visible, and impossible to fake.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 12H10M3 12L7 8M3 12L7 16M21 12H14M21 12L17 8M21 12L17 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3>The right match, not just the nearest one</h3>
-        <p>You see the people most likely to get it right, not just whoever's closest. And they see requests worth their time, too. Everyone wins.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3V21M8 7.5C8 6 9.5 5 12 5C14.5 5 16 6.2 16 7.8C16 11 8 10 8 13.5C8 15.3 9.5 16.5 12 16.5C14.5 16.5 16 15.5 16 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Say it the way you'd say it to a friend</h3>
-        <p>Speak or type, in English or Pidgin, however feels natural. Bartr understands, sorts out the details, and even suggests a fair price before you post.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -584,16 +534,14 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <svg viewBox="0 0 32 32" fill="none"><path d="M6 12L14 6L14 10L26 10V14L14 14V18L6 12Z" fill="#0067f5"/><path d="M26 20L18 26L18 22L6 22V18L18 18V14L26 20Z" fill="#0a2e65"/></svg>
-          Bartr
+          <img src="/logo.png" alt="Bartr" />
         </div>
-        <p>Nigeria's markets, finally matched with the trust they deserve.</p>
+        <p>...Let's help you find them.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Product</h4>
           <a href="#how">How it works</a>
-          <a href="#features">Why Bartr</a>
           <a href="#faq">FAQ</a>
         </div>
         <div class="footer-col">
