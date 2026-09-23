@@ -4,8 +4,6 @@
 
 Bartr is an AI-matched marketplace that connects people who need something done — repaired, styled, fixed, built — with trusted, rated vendors and technicians nearby. Think of it as a ride-hailing app, but instead of matching you with the nearest driver, it matches you with the nearest *skill*.
 
----
-
 ## Table of contents
 
 - [The problem](#the-problem)
@@ -24,8 +22,6 @@ Bartr is an AI-matched marketplace that connects people who need something done 
 - [Research behind the product](#research-behind-the-product)
 - [Team](#team)
 - [License](#license)
-
----
 
 ## The problem
 
@@ -172,10 +168,8 @@ Every core decision in Bartr traces back to field interviews conducted with phon
 
 ## Team
 
-- **Akolo Amos Bulus** — Founder & Lead Developer
-
-_Add other team members and roles here._
+- **Akolo Amos Bulus** — Lead Developer
+- **MOSES AUGUSTINA CHIOMA** — Product Developer
 
 ## License
 
-_Add a license (e.g. MIT) here before making the repository public._
