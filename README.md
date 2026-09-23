@@ -169,7 +169,7 @@ Every core decision in Bartr traces back to field interviews conducted with phon
 ## Team
 
 - **Akolo Amos Bulus** — Lead Developer
-- **MOSES AUGUSTINA CHIOMA** — Product Developer
+- **MOSES AUGUSTINA CHIOMA** — Product Designer
 
 ## License
 
