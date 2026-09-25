@@ -13,7 +13,7 @@ Bartr is an AI-matched marketplace that connects people who need something done 
   - [For customers](#for-customers)
   - [For vendors](#for-vendors)
 - [Live demo / downloads](#live-demo--downloads)
-- [Repository](#repository)
+- [Repositories](#repositories)
 - [Project structure](#project-structure)
 - [Tech stack](#tech-stack)
 - [Running it locally](#running-it-locally)
@@ -78,65 +78,84 @@ AI isn't decoration here — it's doing three specific jobs:
 
 This is currently a working **interactive prototype**, not a published app. There's no App Store / Google Play listing yet — the "Download" buttons in the apps are intentionally non-functional placeholders for that reason.
 
-To try it, open the HTML files directly in a browser (desktop or mobile) — see [Running it locally](#running-it-locally).
+To try it, clone the repo you want (see [Repositories](#repositories)) and open the HTML file directly in a browser — see [Running it locally](#running-it-locally).
 
-| App | Status |
-|---|---|
-| Landing page | Prototype — `landing-page/index.html` |
-| Customer app | Prototype — `customer-app/app.html` |
-| Vendor app | Prototype — `vendor-app/app.html` |
-| App Store / Google Play | Not yet published |
+| App | Status | Repository |
+|---|---|---|
+| Customer app | Prototype | [Bartr-Customer-App](https://github.com/akolobulus/Bartr-Customer-App) |
+| Vendor app | Prototype | [Bartr-Vendors-App](https://github.com/akolobulus/Bartr-Vendors-App) |
+| Landing page | Prototype | included in the Customer App repo |
+| App Store / Google Play | Not yet published | — |
 
-## Repository
+## Repositories
 
-> **Repo link:** _add your GitHub/GitLab URL here once the project is pushed_
+Bartr is split across two repositories, one per app:
 
+**Customer app**
 ```
-git clone <add-repo-url-here>
-cd bartr
+git clone https://github.com/akolobulus/Bartr-Customer-App.git
 ```
+[github.com/akolobulus/Bartr-Customer-App](https://github.com/akolobulus/Bartr-Customer-App)
+
+**Vendor app**
+```
+git clone https://github.com/akolobulus/Bartr-Vendors-App.git
+```
+[github.com/akolobulus/Bartr-Vendors-App](https://github.com/akolobulus/Bartr-Vendors-App)
 
 ## Project structure
 
+**Bartr-Customer-App**
 ```
-bartr/
-├── landing-page/
-│   └── index.html          # Marketing landing page
-├── customer-app/
-│   └── app.html             # Customer-facing app prototype
-├── vendor-app/
-│   └── app.html             # Vendor-facing app prototype
+Bartr-Customer-App/
+├── landing-page/            # Next.js marketing site
+│   ├── app/ or pages/
+│   └── package.json
+├── app.html                 # Original interactive prototype (reference)
 ├── docs/
 │   └── sdlc-phase1-3.md     # Planning, requirements & system design doc
 └── README.md
 ```
+*(Kotlin native Android project structure to be added — see [Roadmap](#roadmap).)*
+
+**Bartr-Vendors-App**
+```
+Bartr-Vendors-App/
+├── app.html                 # Original interactive prototype (reference)
+└── README.md
+```
+*(Kotlin native Android project structure to be added — see [Roadmap](#roadmap).)*
 
 ## Tech stack
 
-**Prototype (current):**
-- HTML, CSS, and vanilla JavaScript — single-file, self-contained apps
-- [Leaflet.js](https://leafletjs.com/) + OpenStreetMap for live, interactive maps (no API key required)
-- [Font Awesome](https://fontawesome.com/) for category-matched icons (repair, nails, mechanic, etc.)
-- Google Fonts (Space Grotesk + Inter)
+| App | Stack |
+|---|---|
+| Landing page | [Next.js](https://nextjs.org/) |
+| Customer app | Kotlin (native Android) |
+| Vendor app | Kotlin (native Android) |
 
-**Planned for production (see [Roadmap](#roadmap)):**
-- React Native (Expo) for the customer and vendor mobile apps
+**Original prototypes:** each repo also includes the interactive HTML/CSS/JS prototype used to design and validate the flow before the Next.js/Kotlin builds — self-contained, with [Leaflet.js](https://leafletjs.com/) + OpenStreetMap for live maps, [Font Awesome](https://fontawesome.com/) for category icons, and Google Fonts (Space Grotesk + Inter).
+
+**Still to come (see [Roadmap](#roadmap)):**
 - Firebase or Supabase for realtime data, auth, and geo-queries
 - An LLM API for request parsing and price guidance
 - Paystack or Flutterwave for escrow-based payments
 
 ## Running it locally
 
-No build step, no dependencies to install — these are self-contained HTML files.
+**Landing page (Next.js):**
+```
+cd landing-page
+npm install
+npm run dev
+```
+Then open `http://localhost:3000`.
 
-1. Clone or download the repository.
-2. Open any of the following directly in a browser:
-   - `landing-page/index.html`
-   - `customer-app/app.html`
-   - `vendor-app/app.html`
-3. For the closest experience to the real thing, open the app files on a mobile device or use your browser's device-emulation mode (they're designed at a ~390px mobile width).
+**Customer and vendor apps (Kotlin, native Android):**
+Open the project in Android Studio and run it on an emulator or device. *(Native project structure to be added to each repo — see [Roadmap](#roadmap).)*
 
-No environment variables or API keys are needed — the maps use OpenStreetMap's public tile servers.
+**Interactive prototypes (no build step required):**
+The original HTML/CSS/JS prototypes are still included in each repo for quick reference — just open `app.html` directly in a browser. For the closest feel to the real apps, view them on a mobile device or with your browser's device-emulation mode (designed at a ~390px mobile width). No environment variables or API keys are needed — the maps use OpenStreetMap's public tile servers.
 
 ## Design system
 
@@ -155,7 +174,7 @@ No environment variables or API keys are needed — the maps use OpenStreetMap's
 
 ## Roadmap
 
-- [ ] Rebuild the customer and vendor apps in React Native for real device deployment
+- [ ] Build out the Kotlin native Android project structure for the customer and vendor apps
 - [ ] Connect an LLM API for live request parsing (currently simulated in the prototype)
 - [ ] Wire up real accounts, auth, and a shared backend so the customer and vendor apps talk to each other
 - [ ] Escrow payments via Paystack/Flutterwave
@@ -169,7 +188,6 @@ Every core decision in Bartr traces back to field interviews conducted with phon
 ## Team
 
 - **Akolo Amos Bulus** — Lead Developer
-- **MOSES AUGUSTINA CHIOMA** — Product Designer
+- **Moses Augustina Chioma** — Product Designer
 
 ## License
-
