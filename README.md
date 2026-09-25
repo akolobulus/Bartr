@@ -1,11 +1,11 @@
 # Bartr
-
+ 
 **There's always someone nearby who can.**
-
+ 
 Bartr is an AI-matched marketplace that connects people who need something done — repaired, styled, fixed, built — with trusted, rated vendors and technicians nearby. Think of it as a ride-hailing app, but instead of matching you with the nearest driver, it matches you with the nearest *skill*.
-
+ 
 ## Table of contents
-
+ 
 - [The problem](#the-problem)
 - [Our solution](#our-solution)
 - [Where AI fits in](#where-ai-fits-in)
@@ -22,102 +22,109 @@ Bartr is an AI-matched marketplace that connects people who need something done 
 - [Research behind the product](#research-behind-the-product)
 - [Team](#team)
 - [License](#license)
-
 ## The problem
-
+ 
 Across Nigeria, more than **9 in 10 working people** earn their living outside the formal economy — repairing phones, fixing cars, doing nails, building, styling, fixing (Nigerian Economic Summit Group, *"From Hustle to Decent Work,"* 2025). They are the backbone of how the country runs, and yet finding trustworthy work — or a trustworthy customer — still comes down to luck.
-
+ 
 In field interviews conducted directly with vendors and technicians at Computer Village, Ikeja, the same problems came up again and again, unprompted:
-
+ 
 - **No reliable way to find new customers.** Vendors reported spending ₦100,000–₦400,000 on ad subscriptions (Jiji, mainly) with little or nothing to show for it.
 - **No trust signal.** Buyer and seller transact off-platform with no verification, and scams are common. Vendors explicitly asked for something like Uber's star system.
 - **No shared sense of fair pricing.** The same repair might go for ₦1,000 from one technician and ₦5,000 from another, undercutting quality work.
 - **Existing "skills marketplaces" don't fit.** Platforms like LinkedIn, Upwork, and Fiverr are built for white-collar, CV-based, remote work — none of them serve blue-collar, in-person, market-based labor the way ride-hailing apps serve transport.
-
 ## Our solution
-
+ 
 Bartr applies the **request → match → accept → complete → rate** loop that already works for ride-hailing to informal-sector services, with an AI layer doing the parts a listing site can't:
-
+ 
 1. **Describe what you need**, in your own words or your own voice — no rigid forms.
 2. **AI turns that into a structured request** — category, urgency, and a fair suggested price — before you post it.
 3. **Get matched with ranked, rated vendors nearby** — not just the closest one, but the one most likely to actually deliver.
 4. **Track the job in real time**, chat with your vendor, and pay however feels safest (cash or escrow).
 5. **Rate each other when it's done**, building the portable trust layer this market has never had.
-
 ## Where AI fits in
-
+ 
 AI isn't decoration here — it's doing three specific jobs:
-
+ 
 | Feature | What it does |
 |---|---|
 | **Natural-language request parsing** | Converts free-text or voice input (including Pidgin) into a structured job: category, urgency, description, and a suggested price range. |
 | **Fair-price guidance** | Suggests a price range per category based on typical local pricing, directly addressing the undercutting problem uncovered in our research — without forcing a fixed price. |
 | **Two-sided ranked matching** | Customers see vendors ranked by rating, response speed, and price-fit — not just distance. Vendors see requests ranked by relevance to their skill, so they're not scrolling irrelevant jobs. |
-
+ 
 ## Who it's for
-
+ 
 ### For customers
-
+ 
 - Post a request by typing or speaking naturally
 - See a live map of nearby vendors, ranked and rated
 - Compare vendors, message them, and choose who to work with
 - Track a job in real time on a mini-map, from acceptance to completion
 - Pay in cash or hold funds in escrow for larger jobs
 - Rate vendors afterward, and browse job history, saved vendors, and promotions
-
 ### For vendors
-
+ 
 - See job offers near you, filtered by "for you" (your category) or browse others
 - Accept or decline a request within a 10-minute window before it's offered elsewhere
 - Navigate to the customer with a live route on the map
 - Move a job through clear stages: *heading there → arrived → in progress → complete*
 - Track earnings, with a balance-visibility toggle for privacy in public
 - Chat with the customer, and view job history and payouts
-
 ## Live demo / downloads
-
+ 
 This is currently a working **interactive prototype**, not a published app. There's no App Store / Google Play listing yet — the "Download" buttons in the apps are intentionally non-functional placeholders for that reason.
-
+ 
 To try it, clone the repo you want (see [Repositories](#repositories)) and open the HTML file directly in a browser — see [Running it locally](#running-it-locally).
-
-| App | Status | Repository |
+ 
+| App | Status | Link |
 |---|---|---|
+| Landing page | **Live** | [bartrr.vercel.app](https://bartrr.vercel.app/) |
 | Customer app | Prototype | [Bartr-Customer-App](https://github.com/akolobulus/Bartr-Customer-App) |
 | Vendor app | Prototype | [Bartr-Vendors-App](https://github.com/akolobulus/Bartr-Vendors-App) |
-| Landing page | Prototype | included in the Customer App repo |
 | App Store / Google Play | Not yet published | — |
-
+ 
 ## Repositories
-
-Bartr is split across two repositories, one per app:
-
+ 
+Bartr is split across three repositories:
+ 
+**Landing page** — live at [bartrr.vercel.app](https://bartrr.vercel.app/)
+```
+git clone https://github.com/akolobulus/Bartr.git
+```
+[github.com/akolobulus/Bartr](https://github.com/akolobulus/Bartr)
+ 
 **Customer app**
 ```
 git clone https://github.com/akolobulus/Bartr-Customer-App.git
 ```
 [github.com/akolobulus/Bartr-Customer-App](https://github.com/akolobulus/Bartr-Customer-App)
-
+ 
 **Vendor app**
 ```
 git clone https://github.com/akolobulus/Bartr-Vendors-App.git
 ```
 [github.com/akolobulus/Bartr-Vendors-App](https://github.com/akolobulus/Bartr-Vendors-App)
-
+ 
 ## Project structure
-
+ 
+**Bartr** (landing page)
+```
+Bartr/
+├── app/ or pages/            # Next.js routes
+├── package.json
+└── README.md
+```
+Deployed at [bartrr.vercel.app](https://bartrr.vercel.app/).
+ 
 **Bartr-Customer-App**
 ```
 Bartr-Customer-App/
-├── landing-page/            # Next.js marketing site
-│   ├── app/ or pages/
-│   └── package.json
 ├── app.html                 # Original interactive prototype (reference)
 ├── docs/
 │   └── sdlc-phase1-3.md     # Planning, requirements & system design doc
 └── README.md
 ```
 *(Kotlin native Android project structure to be added — see [Roadmap](#roadmap).)*
-
+ 
 **Bartr-Vendors-App**
 ```
 Bartr-Vendors-App/
@@ -125,40 +132,40 @@ Bartr-Vendors-App/
 └── README.md
 ```
 *(Kotlin native Android project structure to be added — see [Roadmap](#roadmap).)*
-
+ 
 ## Tech stack
-
+ 
 | App | Stack |
 |---|---|
 | Landing page | [Next.js](https://nextjs.org/) |
 | Customer app | Kotlin (native Android) |
 | Vendor app | Kotlin (native Android) |
-
+ 
 **Original prototypes:** each repo also includes the interactive HTML/CSS/JS prototype used to design and validate the flow before the Next.js/Kotlin builds — self-contained, with [Leaflet.js](https://leafletjs.com/) + OpenStreetMap for live maps, [Font Awesome](https://fontawesome.com/) for category icons, and Google Fonts (Space Grotesk + Inter).
-
+ 
 **Still to come (see [Roadmap](#roadmap)):**
 - Firebase or Supabase for realtime data, auth, and geo-queries
 - An LLM API for request parsing and price guidance
 - Paystack or Flutterwave for escrow-based payments
-
 ## Running it locally
-
-**Landing page (Next.js):**
+ 
+**Landing page (Next.js)** — or just visit the live site at [bartrr.vercel.app](https://bartrr.vercel.app/):
 ```
-cd landing-page
+git clone https://github.com/akolobulus/Bartr.git
+cd Bartr
 npm install
 npm run dev
 ```
 Then open `http://localhost:3000`.
-
+ 
 **Customer and vendor apps (Kotlin, native Android):**
 Open the project in Android Studio and run it on an emulator or device. *(Native project structure to be added to each repo — see [Roadmap](#roadmap).)*
-
+ 
 **Interactive prototypes (no build step required):**
 The original HTML/CSS/JS prototypes are still included in each repo for quick reference — just open `app.html` directly in a browser. For the closest feel to the real apps, view them on a mobile device or with your browser's device-emulation mode (designed at a ~390px mobile width). No environment variables or API keys are needed — the maps use OpenStreetMap's public tile servers.
-
+ 
 ## Design system
-
+ 
 | Token | Value | Use |
 |---|---|---|
 | Primary Blue | `#0067f5` | Brand color, primary actions, hero sections |
@@ -169,25 +176,24 @@ The original HTML/CSS/JS prototypes are still included in each repo for quick re
 | Avocado T4 | `#f4f4ed` | Neutral page background |
 | Backdrop Gray | `#f5f6fa` | Card and input backgrounds |
 | Yellow T4 | `#ffffee` | Urgency/highlight accents |
-
+ 
 **Typography:** Space Grotesk (display/headings), Inter (body). *Note: the brand's intended typeface, "Rency" with Naira-sign support, could not be sourced — Space Grotesk is a placeholder pending the actual font file.*
-
+ 
 ## Roadmap
-
+ 
 - [ ] Build out the Kotlin native Android project structure for the customer and vendor apps
 - [ ] Connect an LLM API for live request parsing (currently simulated in the prototype)
 - [ ] Wire up real accounts, auth, and a shared backend so the customer and vendor apps talk to each other
 - [ ] Escrow payments via Paystack/Flutterwave
 - [ ] Trust/verification layer for vendor onboarding
 - [ ] Expand beyond the initial pilot category and location
-
 ## Research behind the product
-
+ 
 Every core decision in Bartr traces back to field interviews conducted with phone sellers, repair technicians, and adjacent market vendors — not assumptions. See `docs/sdlc-phase1-3.md` for the full planning, requirements, and system design documentation, including the feasibility study and matching algorithm.
-
+ 
 ## Team
-
+ 
 - **Akolo Amos Bulus** — Lead Developer
 - **Moses Augustina Chioma** — Product Designer
-
 ## License
+ 
