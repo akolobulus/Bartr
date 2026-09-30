@@ -30,9 +30,29 @@ export default function LandingInteractions() {
       return () => button.removeEventListener('click', handleClick);
     });
 
-    const storeButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.store-badge'));
+    const storeButtons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('.store-badge:not(.launch-web-trigger)'),
+    );
     const storeCleanups = storeButtons.map((button) => {
-      const handleClick = () => alert("Bartr isn't published yet. Check back soon!");
+      const handleClick = () => {
+        try {
+          alert("Bartr mobile apps are coming soon to Google Play. Try the Web Version!");
+        } catch {
+          // Avoid crashing if alert is restricted in iframe sandbox
+        }
+      };
+      button.addEventListener('click', handleClick);
+      return () => button.removeEventListener('click', handleClick);
+    });
+
+    const launchButtons = Array.from(
+      document.querySelectorAll<HTMLElement>('.launch-web-trigger, [data-action="launch-web"]'),
+    );
+    const launchCleanups = launchButtons.map((button) => {
+      const handleClick = (e: MouseEvent) => {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-bartr-launch-modal'));
+      };
       button.addEventListener('click', handleClick);
       return () => button.removeEventListener('click', handleClick);
     });
@@ -77,6 +97,7 @@ export default function LandingInteractions() {
     return () => {
       faqCleanups.forEach((cleanup) => cleanup());
       storeCleanups.forEach((cleanup) => cleanup());
+      launchCleanups.forEach((cleanup) => cleanup());
       dotCleanups.forEach((cleanup) => cleanup());
       if (timer) clearInterval(timer);
       dotsWrap?.replaceChildren();
