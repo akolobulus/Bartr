@@ -193,6 +193,9 @@ Every core decision in Bartr traces back to field interviews conducted with phon
  
 ## Team
  
-- **Akolo Amos Bulus** — Lead Developer
+- **Akolo Amos Bulus** — Software Engineer.
+- **Ayodeji Adesegun** — Software Engineer. Builds the Swift versions of the Bartr apps and sharpens the design of this website.
 ## License
+
+MIT License
  

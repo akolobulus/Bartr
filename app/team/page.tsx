@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
 import type { SVGProps } from 'react';
-import TeamSection, { type SocialLink } from '@/components/ui/team-section';
+
+export const metadata: Metadata = {
+  title: 'Team | Bartr',
+  description: 'The people building Bartr.',
+};
 
 function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -28,31 +34,76 @@ function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-const mainSocialLinks: SocialLink[] = [
-  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/akolo-bulus/' },
-  { icon: GithubIcon, href: 'https://github.com/akolobulus' },
-  { icon: InstagramIcon, href: 'https://www.instagram.com/heisakolo/' },
-];
-
-const teamMembers = [
+const members = [
   {
     name: 'Akolo Bulus',
-    designation: 'Software Engineer',
-    imageSrc: '/akolo-bulus-avatar.svg',
-    socialLinks: mainSocialLinks,
+    role: 'Software Engineer',
+    note: 'Building practical product experiences that solve real problems for communities, teams, and users.',
+    avatar: '/team/akolo-bulus.jpg',
+    links: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/akolo-bulus/', Icon: LinkedinIcon },
+      { label: 'GitHub', href: 'https://github.com/akolobulus', Icon: GithubIcon },
+      { label: 'Instagram', href: 'https://www.instagram.com/heisakolo/', Icon: InstagramIcon },
+    ],
+  },
+  {
+    name: 'Ayodeji Adesegun',
+    role: 'Software Engineer',
+    note: 'Builds the Swift versions of the Bartr apps and sharpens the design of this website.',
+    avatar: '/team/ayodeji-adesegun.jpg',
+    links: [
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/ayodejiades/', Icon: LinkedinIcon },
+      { label: 'Instagram', href: 'https://instagram.com/ayodeji.ades', Icon: InstagramIcon },
+    ],
   },
 ];
 
 export default function TeamPage() {
   return (
-    <TeamSection
-      title="CREATIVE TEAM"
-      description="Software engineer building practical product experiences and shipping ideas that solve real problems for communities, teams, and users.
-      "
-      members={teamMembers}
-      registerLink="/"
-      logo={<span>AKOLO</span>}
-      socialLinksMain={mainSocialLinks}
-    />
+    <main id="content">
+      <section className="team-hero">
+        <div className="container">
+          <h1 className="h1">The people building Bartr.</h1>
+          <p className="lead">
+            Software engineers building practical product experiences for communities, teams, and users.
+          </p>
+        </div>
+      </section>
+
+      <section className="container team-grid" aria-label="Team members">
+        {members.map((member) => (
+          <article className="member" key={member.name}>
+            <Image
+              src={member.avatar}
+              alt={member.name}
+              width={420}
+              height={420}
+              sizes="144px"
+              className="member-avatar"
+            />
+            <div>
+              <h2 className="member-name">{member.name}</h2>
+              <p className="member-role">{member.role}</p>
+            </div>
+            <p className="member-note">{member.note}</p>
+            {member.links.length > 0 ? (
+              <div className="socials">
+                {member.links.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${member.name} on ${label}`}
+                  >
+                    <Icon width={18} height={18} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            ) : null}
+          </article>
+        ))}
+      </section>
+    </main>
   );
 }
